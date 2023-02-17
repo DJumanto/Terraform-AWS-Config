@@ -1,5 +1,5 @@
 provider "aws" {
-  region     = "ap-southeast-1"
+  region     = var.aws_region
   access_key = var.AWS_ACCESS_KEY_ID
   secret_key = var.AWS_SECRET_ACCESS_KEY
 }
@@ -37,6 +37,13 @@ resource "aws_security_group" "instance_security_group" {
     from_port = 3306
     to_port = 3306
     protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  engress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
