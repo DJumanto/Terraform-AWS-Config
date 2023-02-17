@@ -4,19 +4,9 @@ provider "aws" {
   secret_key = var.AWS_SECRET_ACCESS_KEY
 }
 
-resource "aws_instance" "Learn-Terraform" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  key_name      = var.key_pair
-
-  tags = {
-    Name = var.tag_name
-  }
-}
-
-resource "aws_security_group" "UFW_Enable" {
+resource "aws_security_group" "instance_security_group" {
   name = var.security_group
-  description = "Allow 3 port (443,80,22,3306) to be accessed"
+  description = "Allow 4 port (443,80,22,3306) to be accessed"
 
   #http
   ingress {
@@ -50,3 +40,18 @@ resource "aws_security_group" "UFW_Enable" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_instance" "Learn-Terraform" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  key_name      = var.key_pair
+  vpc_security_group_ids = ["${aws_security_group.instance_security_group.id}"]
+  tags = {
+    Name = var.tag_name
+  }
+
+  root_block_device {
+    volume_size = 8
+  }
+}
+

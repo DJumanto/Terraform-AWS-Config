@@ -28,10 +28,10 @@ variable "ami_id"{
 
 variable "key_pair"{
     description = "Key to access Instance via ssh"
-    default = "Lab-AJK-WebServer"
+    default = null
 }
 
 variable "security_group"{
     description = "Security Group"
-    default = "UFW Enable"
+    default = "instance-security-group"
 }
