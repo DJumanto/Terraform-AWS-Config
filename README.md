@@ -315,6 +315,14 @@ for more detail, you can go to [this site](https://certbot.eff.org/instructions?
 
 Now you can access via https protocol
 ## CRONTAB SECTION
+### install cron
+```sh
+sudo apt-get update
+```
+```sh
+sudo apt-get -y install cron
+```
+
 > depedencies installation
 > google api
 > script explanation
