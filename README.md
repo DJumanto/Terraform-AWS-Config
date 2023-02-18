@@ -1,8 +1,8 @@
  # AJK Assignment Deploy Laravel In AWS EC2
 Kelompok 6:
 - Alfa Fakhrur Rizal Zaini (5025211214)
-- Nabila Aidah Diani (5025211032)
-- M Rafif Tri Risqullah
+- M Rafif Tri Risqullah (5025211009)
+- Nabila A'idah Diani (5025211032)
 
 ## Create EC2 Instance using Terraform
 Create 3 files to configure EC2 instance:
@@ -323,10 +323,34 @@ sudo apt-get update
 ```sh
 sudo apt-get -y install cron
 ```
-### Set up cron schedule
+### Edit cron
 ```sh
 sudo nano /etc/crontab
 ```
+### Set up cron schedule
+```sh
+* * * * * /path/to/file.py
+```
+Use powershell to connect cron schedule with webserver by generating key from aws and decrypt key
+```sh
+$path = ".\notes-api-webserver.pem"
+```
+Reset to remove explicit permissions
+```sh
+icacls.exe $path /reset
+```
+Give current user explicit read-permission
+```sh
+icacls.exe $path /GRANT:R "$($env:USERNAME):(R)"
+```
+Disable inheritance and remove inherited permissions
+```sh
+icacls.exe $path /inheritance:r
+```
+
+Then log in to ssh using the key and Public IP
+
+
 
 > depedencies installation
 > google api
