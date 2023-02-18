@@ -269,15 +269,51 @@ sudo php artisan migrate
 sudo service nginx reload
 ```
 
-## CERTBOT SECTION
-> depedencies installation
-> certbot config
-> executing
-
+## Get Domain Name System
+Buy a DNS we will use for our application
+u can buy it in [niagahoster](niagahoster.co.id)
+for this project we use ``.site`` domain.
+[our project site](https://tugas.ajkkelompokzaenab.site/)
 
 ## DNS SECTION
-> adding record on aws cloud and niagahoster.com
+Next, set records for dns both in aws route53 and dns record management in niagahoster.
+set dns target to EC2 instance public_ip, therefore you'll able to access your site via port 80
 
+## CERTBOT SECTION
+To ahve access from https protocol, set up certificate using certbot
+### Install snapd
+```sh
+sudo apt install snapd
+```
+### Ensure our snapd is up to date
+```sh
+sudo snap install core; sudo snap refresh core
+```
+### Remove certbot-auto and any Certbot OS packages
+```sh
+sudo apt-get remove certbot
+```
+### install certbot
+```sh
+sudo snap install --classic certbot
+```
+### Prepare the Certbot command
+```sh
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+```
+### Choose how you'd like to run Certbot
+```sh
+sudo certbot --nginx
+```
+if you got **server_name** error in this section, make sure you have set your server_name in ``example.conf``
+with our dns instead of localhost
+### Test automatic renewal
+```sh
+sudo certbot renew --dry-run
+```
+for more detail, you can go to [this site](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal)
+
+Now you can access via https protocol
 ## CRONTAB SECTION
 > depedencies installation
 > google api
