@@ -315,12 +315,17 @@ for more detail, you can go to [this site](https://certbot.eff.org/instructions?
 
 Now you can access via https protocol
 ## CRONTAB SECTION
-### install cron
+First, install cron on linux to schedule the python script
+### Install cron
 ```sh
 sudo apt-get update
 ```
 ```sh
 sudo apt-get -y install cron
+```
+### Set up cron schedule
+```sh
+sudo nano /etc/crontab
 ```
 
 > depedencies installation
