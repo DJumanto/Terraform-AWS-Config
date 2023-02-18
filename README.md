@@ -351,9 +351,3 @@ icacls.exe $path /inheritance:r
 
 Then log in to ssh using the key and Public IP
 
-
-
-> depedencies installation
-> google api
-> script explanation
-> setting up the crontab
