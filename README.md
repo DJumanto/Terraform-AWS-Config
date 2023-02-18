@@ -350,4 +350,5 @@ icacls.exe $path /inheritance:r
 ```
 
 Then log in to ssh using the key and Public IP
-
+```
+ssh -i "file.pem" serverusername@publicipv4
