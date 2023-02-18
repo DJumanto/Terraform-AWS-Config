@@ -1,8 +1,8 @@
  # AJK Assignment Deploy Laravel In AWS EC2
 Kelompok 6:
-- Alfa Fakhrur Rizal Zaini (5025211214)
-- M Rafif Tri Risqullah (5025211009)
-- Nabila A'idah Diani (5025211032)
+- Alfa Fakhrur Rizal Zaini (5025211214) [Cloud Handling, DNS, CertBot]
+- M Rafif Tri Risqullah (5025211009) [Laravel Deployment, Nginx Configuration]
+- Nabila A'idah Diani (5025211032) [Backup Script, Automation]
 
 ## Create EC2 Instance using Terraform
 Create 3 files to configure EC2 instance:
